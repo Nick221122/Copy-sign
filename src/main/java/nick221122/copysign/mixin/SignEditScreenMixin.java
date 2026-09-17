@@ -3,9 +3,6 @@ package nick221122.copysign.mixin;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.block.entity.SignText;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.Drawable;
-import net.minecraft.client.gui.Element;
-import net.minecraft.client.gui.Selectable;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.SignEditScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -19,15 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SignEditScreen.class)
 public abstract class SignEditScreenMixin extends Screen {
-    @Shadow
-    protected abstract <T extends Element & Selectable & Drawable> T addDrawableChild(T drawable);
-
-    @Shadow
-    protected int width;
-
-    @Shadow
-    protected int height;
-
     @Shadow
     @Final
     protected SignBlockEntity blockEntity;
