@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "nick221122.copysign.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "AbstractSignEditScreenAccessor",
+    "SignEditScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
