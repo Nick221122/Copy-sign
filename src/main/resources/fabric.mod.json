@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "copy-sign",
+  "version": "${version}",
+  "name": "Copy Sign",
+  "description": "Right-click a sign to open a copy screen and copy its text to your system clipboard.",
+  "authors": [
+    "Nick221122"
+  ],
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "nick221122.copysign.CopySignClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "1.21.11",
+    "fabric-api": "*"
+  }
+}
