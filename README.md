@@ -2,7 +2,7 @@
 
 A client-side Fabric mod for Minecraft 1.21.11.
 
-Right-click a sign to open the Copy Sign screen. The sign text is shown in the screen, with a **Copy** button on the left side. Pressing **Copy** places the sign text into the normal system clipboard, so it can be pasted with `Ctrl+V` in Minecraft or other applications such as Google.
+Right-click a sign to open the normal Minecraft sign editing screen. A **Copy** button is added on the left side. Press it to copy the current sign text to the system clipboard, so it can be pasted with `Ctrl+V` in Minecraft or other applications.
 
 ## Build
 
