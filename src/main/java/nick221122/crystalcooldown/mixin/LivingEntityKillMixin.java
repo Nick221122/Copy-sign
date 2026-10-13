@@ -15,15 +15,19 @@ public abstract class LivingEntityKillMixin {
     @Unique private boolean crystalCooldown$handledDeath;
 
     @Inject(method = "tick", at = @At("TAIL"))
-    private void crystalCooldown$detectKill(CallbackInfo ci) {
+    private void crystalCooldown$detectNearbyPlayerDeath(CallbackInfo ci) {
         LivingEntity victim = (LivingEntity) (Object) this;
         MinecraftClient client = MinecraftClient.getInstance();
+
         if (!victim.isDead()) {
             crystalCooldown$handledDeath = false;
             return;
         }
+
         if (crystalCooldown$handledDeath || client.player == null || !(victim instanceof PlayerEntity)) return;
-        if (victim.getRecentDamageSource() != null && victim.getRecentDamageSource().getAttacker() == client.player) {
+
+        // Any player death within 10 blocks triggers the cooldown, regardless of who caused it.
+        if (victim.squaredDistanceTo(client.player) <= 100.0) {
             crystalCooldown$handledDeath = true;
             CooldownState.trigger();
         }
