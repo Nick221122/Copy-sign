@@ -6,11 +6,12 @@ public final class CooldownState {
     private CooldownState() {}
 
     public static void trigger() {
+        if (!CooldownConfig.isEnabled()) return;
         lockedUntilMillis = System.currentTimeMillis() + CooldownConfig.getSeconds() * 1000L;
     }
 
     public static boolean isLocked() {
-        return remainingMillis() > 0;
+        return CooldownConfig.isEnabled() && remainingMillis() > 0;
     }
 
     public static long remainingMillis() {
