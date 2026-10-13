@@ -9,13 +9,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MinecraftClient.class)
 public abstract class MinecraftClientMixin {
+    // Only block left-click attacks during the cooldown. Right-click item use is untouched.
     @Inject(method = "doAttack", at = @At("HEAD"), cancellable = true)
     private void crystalCooldown$blockAttack(CallbackInfoReturnable<Boolean> cir) {
         if (CooldownState.isLocked()) cir.setReturnValue(false);
-    }
-
-    @Inject(method = "doItemUse", at = @At("HEAD"), cancellable = true)
-    private void crystalCooldown$blockUse(org.spongepowered.asm.mixin.injection.callback.CallbackInfo ci) {
-        if (CooldownState.isLocked()) ci.cancel();
     }
 }
