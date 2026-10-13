@@ -8,7 +8,6 @@ import net.minecraft.text.Text;
 
 public final class CooldownSettingsScreen extends Screen {
     private final Screen parent;
-    private SecondsSlider secondsSlider;
 
     public CooldownSettingsScreen(Screen parent) {
         super(Text.literal("Crystal Kill Click Cooldown"));
@@ -19,22 +18,28 @@ public final class CooldownSettingsScreen extends Screen {
     protected void init() {
         int cx = this.width / 2;
         int cy = this.height / 2;
-        secondsSlider = new SecondsSlider(cx - 100, cy - 8, 200, 20, CooldownConfig.getSeconds());
-        this.addDrawableChild(secondsSlider);
+        this.addDrawableChild(ButtonWidget.builder(
+                Text.literal("Cooldown: " + (CooldownConfig.isEnabled() ? "ON" : "OFF")),
+                b -> {
+                    CooldownConfig.setEnabled(!CooldownConfig.isEnabled());
+                    this.clearAndInit();
+                }).dimensions(cx - 100, cy - 35, 200, 20).build());
+
+        this.addDrawableChild(new SecondsSlider(cx - 100, cy + 2, 200, 20, CooldownConfig.getSeconds()));
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Done"), b -> close())
-                .dimensions(cx - 50, cy + 28, 100, 20).build());
+                .dimensions(cx - 50, cy + 38, 100, 20).build());
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, this.height / 2 - 52, 0xFFFFFF);
+        context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, this.height / 2 - 65, 0xFFFFFF);
         context.drawCenteredTextWithShadow(this.textRenderer,
                 "Cooldown length: " + CooldownConfig.getSeconds() + " seconds",
-                this.width / 2, this.height / 2 - 28, 0xFFFFFF);
+                this.width / 2, this.height / 2 - 12, 0xFFFFFF);
         context.drawCenteredTextWithShadow(this.textRenderer,
                 "Only left-click attacks are blocked; right-click still works.",
-                this.width / 2, this.height / 2 + 58, 0xAAAAAA);
+                this.width / 2, this.height / 2 + 65, 0xAAAAAA);
     }
 
     @Override
