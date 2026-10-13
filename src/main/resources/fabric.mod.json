@@ -1,18 +1,17 @@
 {
   "schemaVersion": 1,
-  "id": "copy-sign",
+  "id": "crystal_kill_click_cooldown",
   "version": "${version}",
-  "name": "Copy Sign",
-  "description": "Adds a Copy button to the vanilla sign editing screen to copy sign text to the system clipboard.",
-  "authors": [
-    "Nick221122"
-  ],
+  "name": "Crystal PvP Kill Click Cooldown",
+  "description": "Blocks attack and use actions for a configurable interval after a detected player kill.",
+  "authors": ["Nick221122"],
   "environment": "client",
-  "mixins": [
-    "copy-sign.mixins.json"
-  ],
+  "entrypoints": { "client": ["nick221122.crystalcooldown.CrystalCooldownClient"] },
+  "mixins": ["crystal-kill-click-cooldown.mixins.json"],
   "depends": {
     "fabricloader": ">=0.18.1",
-    "minecraft": "1.21.11"
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
   }
 }

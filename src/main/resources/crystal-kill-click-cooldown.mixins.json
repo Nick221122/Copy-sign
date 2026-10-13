@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "package": "nick221122.crystalcooldown.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["MinecraftClientMixin", "LivingEntityKillMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

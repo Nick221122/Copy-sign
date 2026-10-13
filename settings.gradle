@@ -4,7 +4,6 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
-
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id == 'net.fabricmc.fabric-loom-remap') {
@@ -13,5 +12,4 @@ pluginManagement {
         }
     }
 }
-
-rootProject.name = 'copy-sign'
+rootProject.name = 'crystal-kill-click-cooldown'
